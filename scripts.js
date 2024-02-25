@@ -11,3 +11,14 @@ function getComputerChoice()
             return "Scissors"
     }
 }
+function playRound(playerSelection, computerSelection) 
+{
+    if ((playerSelection.toLowerCase() == "rock" && computerSelection.toLowerCase() == "scissors") || (playerSelection.toLowerCase() == "paper" && computerSelection.toLowerCase() == "rock") || (playerSelection.toLowerCase() == "scissors" && computerSelection.toLowerCase() == "rock"))
+    {
+        return `You win! ${playerSelection} beats ${computerSelection}`
+    }
+    else
+    {
+        return `You lose! ${computerSelection} beats ${playerSelection}`
+    }
+}
