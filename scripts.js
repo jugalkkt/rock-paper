@@ -22,3 +22,18 @@ function playRound(playerSelection, computerSelection)
         return `You lose! ${computerSelection} beats ${playerSelection}`
     }
 }
+function playGame()
+{
+    let playerScore = computerScore = 0;
+    for (let i = 0; i < 5; i++)
+    {
+        let playerSelection = prompt("Enter your choice: ")
+        let computerSelection = getComputerChoice().toLowerCase()
+        let result = playRound(playerSelection, computerSelection)
+        console.log(result)
+        if (/You win!/.test(result)) ++playerScore;
+        else ++computerScore;
+    }
+    if (playerScore > computerScore) console.log(`You win! You scored ${playerScore} points and computer score ${computerScore}`)
+    else console.log(`You lose! You scored ${playerScore} points and computer score ${computerScore}`)    
+}
