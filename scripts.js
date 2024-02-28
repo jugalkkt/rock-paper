@@ -60,10 +60,6 @@ function displayResults()
     if (scorePlayer > scoreComputer) results.textContent = "player wins!";
     else results.textContent = "player loses!";
 }
-function displayRoundResult()
-{
-
-}
 
 
 btns.forEach(btn => {
