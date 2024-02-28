@@ -15,15 +15,15 @@ function playRound(playerSelection, computerSelection)
 {
     if (playerSelection.toLowerCase() == computerSelection.toLowerCase()) 
     {
-        return "Its a tie!";
+        return 0;
     }
     else if ((playerSelection.toLowerCase() == "rock" && computerSelection.toLowerCase() == "scissors") || (playerSelection.toLowerCase() == "paper" && computerSelection.toLowerCase() == "rock") || (playerSelection.toLowerCase() == "scissors" && computerSelection.toLowerCase() == "rock"))
     {
-        return `You win! ${playerSelection} beats ${computerSelection}`;
+        return 1;
     }
     else
     {
-        return `You lose! ${computerSelection} beats ${playerSelection}`;
+        return -1;
     }
 }
 function playGame()
@@ -47,6 +47,24 @@ const btnPaper = document.querySelector(".paper");
 const btnScissors = document.querySelector(".scissors");
 const btns = document.querySelectorAll('button');
 const results = document.querySelector('.results');
+let score = document.querySelector('.score');
+let roundResult = document.querySelector('.roundResult');
+let scorePlayer = scoreComputer = 0;
+
+function displayScore()
+{
+    score.textContent = `player: ${scorePlayer}\tcomputer: ${scoreComputer}`;
+}
+function displayResults()
+{
+    if (scorePlayer > scoreComputer) results.textContent = "player wins!";
+    else results.textContent = "player loses!";
+}
+function displayRoundResult()
+{
+
+}
+
 
 btns.forEach(btn => {
     let computerChoice = getComputerChoice();
@@ -54,7 +72,24 @@ btns.forEach(btn => {
     (
         'click', () => 
         {
-            results.textContent = playRound(btn.classList.value, getComputerChoice());
+            let roundResult = playRound(btn.classList.value, getComputerChoice());
+            switch (roundResult)
+            {
+                case 0:
+                    break;
+                case 1:
+                    ++scorePlayer;
+                    displayScore();
+                    break;
+                case -1:
+                    ++scoreComputer;
+                    displayScore();
+                    break;
+            }
+            if (scorePlayer >= 3 || scoreComputer >=3)
+            {
+                displayResults();
+            }
         }
     )
 });
