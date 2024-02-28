@@ -37,3 +37,17 @@ function playGame()
     if (playerScore > computerScore) console.log(`You win! You scored ${playerScore} points and computer score ${computerScore}`)
     else console.log(`You lose! You scored ${playerScore} points and computer score ${computerScore}`)    
 }
+
+const btnRock = document.querySelector(".rock");
+const btnPaper = document.querySelector(".paper");
+const btnScissors = document.querySelector(".scissors");
+const btns = document.querySelectorAll('button');
+btns.forEach(btn => {
+    btn.addEventListener
+    {
+        'click', () => 
+        {
+            playRound(btn.classList.value);
+        }
+    }
+});
