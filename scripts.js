@@ -13,13 +13,17 @@ function getComputerChoice()
 }
 function playRound(playerSelection, computerSelection) 
 {
-    if ((playerSelection.toLowerCase() == "rock" && computerSelection.toLowerCase() == "scissors") || (playerSelection.toLowerCase() == "paper" && computerSelection.toLowerCase() == "rock") || (playerSelection.toLowerCase() == "scissors" && computerSelection.toLowerCase() == "rock"))
+    if (playerSelection.toLowerCase() == computerSelection.toLowerCase()) 
     {
-        return `You win! ${playerSelection} beats ${computerSelection}`
+        console.log("Its a tie!");
+    }
+    else if ((playerSelection.toLowerCase() == "rock" && computerSelection.toLowerCase() == "scissors") || (playerSelection.toLowerCase() == "paper" && computerSelection.toLowerCase() == "rock") || (playerSelection.toLowerCase() == "scissors" && computerSelection.toLowerCase() == "rock"))
+    {
+        console.log(`You win! ${playerSelection} beats ${computerSelection}`)
     }
     else
     {
-        return `You lose! ${computerSelection} beats ${playerSelection}`
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}`)
     }
 }
 function playGame()
@@ -43,11 +47,12 @@ const btnPaper = document.querySelector(".paper");
 const btnScissors = document.querySelector(".scissors");
 const btns = document.querySelectorAll('button');
 btns.forEach(btn => {
+    let computerChoice = getComputerChoice();
     btn.addEventListener
-    {
+    (
         'click', () => 
         {
-            playRound(btn.classList.value);
+            playRound(btn.classList.value, getComputerChoice());
         }
-    }
+    )
 });
