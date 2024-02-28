@@ -15,15 +15,15 @@ function playRound(playerSelection, computerSelection)
 {
     if (playerSelection.toLowerCase() == computerSelection.toLowerCase()) 
     {
-        console.log("Its a tie!");
+        return "Its a tie!";
     }
     else if ((playerSelection.toLowerCase() == "rock" && computerSelection.toLowerCase() == "scissors") || (playerSelection.toLowerCase() == "paper" && computerSelection.toLowerCase() == "rock") || (playerSelection.toLowerCase() == "scissors" && computerSelection.toLowerCase() == "rock"))
     {
-        console.log(`You win! ${playerSelection} beats ${computerSelection}`)
+        return `You win! ${playerSelection} beats ${computerSelection}`;
     }
     else
     {
-        console.log(`You lose! ${computerSelection} beats ${playerSelection}`)
+        return `You lose! ${computerSelection} beats ${playerSelection}`;
     }
 }
 function playGame()
@@ -46,13 +46,15 @@ const btnRock = document.querySelector(".rock");
 const btnPaper = document.querySelector(".paper");
 const btnScissors = document.querySelector(".scissors");
 const btns = document.querySelectorAll('button');
+const results = document.querySelector('.results');
+
 btns.forEach(btn => {
     let computerChoice = getComputerChoice();
     btn.addEventListener
     (
         'click', () => 
         {
-            playRound(btn.classList.value, getComputerChoice());
+            results.textContent = playRound(btn.classList.value, getComputerChoice());
         }
     )
 });
